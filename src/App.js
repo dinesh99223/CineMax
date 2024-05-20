@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Events from "./Components/Events";
+import Home from "./Components/Home";
+import LatestMovies from "./Components/LatestMovies";
+import MovieDetails from "./Components/MovieDetails";
+import Navigation from "./Components/Navbar";
+import { BrowserRouter as Router, Routes, Route, } from "react-router-dom";
+import UpComingMovies from "./Components/UpComingMovies";
+import BookingDetails from "./Components/BookingDetails";
+import BookingPage from "./Components/BookingPage";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+      <Navigation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/LatestMovies" element={<LatestMovies />} />
+          <Route path="/MovieDetails/:id" element={<MovieDetails />} />
+          <Route path="/Booking" element={<BookingPage />} />
+          <Route path="/NearbyEvents" element={<Events />} />
+          <Route path="/UpcomingMovies" element={<UpComingMovies />} />
+          <Route path="/BookingDetails" element={<BookingDetails />} />
+        </Routes>
+      </Router>
+      
+      
     </div>
   );
 }
